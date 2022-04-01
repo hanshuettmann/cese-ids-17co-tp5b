@@ -25,6 +25,12 @@
 
 /*=====[Definitions of public global variables]==============================*/
 
+static const struct alumno_s ESTEBAN_VOLENTINI = {
+    .apellidos = "VOLENTINI",
+    .nombres = "Esteban Daniel",
+    .documento = "23.517.968",
+};
+
 static const struct alumno_s HANS_HUETTMANN = {
     .apellidos = "HÜTTMANN",
     .nombres = "Patricio Hans",
@@ -32,6 +38,7 @@ static const struct alumno_s HANS_HUETTMANN = {
 };
 
 const alumno_t ALUMNOS[] = {
+    &ESTEBAN_VOLENTINI,
     &HANS_HUETTMANN,
 };
 
