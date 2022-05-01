@@ -29,6 +29,7 @@ extern "C" {
 
 /*=====[Definitions of public data types]====================================*/
 
+//! Student data structure definition
 typedef struct alumno_s {
     char apellidos[30];
     char nombres[30];
@@ -54,3 +55,5 @@ bool SerializarAlumnos(char * cadena, size_t espacio);
 /*=====[Avoid multiple inclusion - end]======================================*/
 
 #endif /* _ALUMNOS_H_ */
+
+/*=====[End of file]=========================================================*/

@@ -25,23 +25,27 @@
 
 /*=====[Definitions of public global variables]==============================*/
 
+//! Esteban Volentini student data
 static const struct alumno_s ESTEBAN_VOLENTINI = {
     .apellidos = "VOLENTINI",
     .nombres = "Esteban Daniel",
     .documento = "23.517.968",
 };
 
+//! Hans Hüttmann student data
 static const struct alumno_s HANS_HUETTMANN = {
     .apellidos = "HÜTTMANN",
     .nombres = "Patricio Hans",
     .documento = "37.658.563",
 };
 
+//! Students data array
 const alumno_t ALUMNOS[] = {
     &ESTEBAN_VOLENTINI,
     &HANS_HUETTMANN,
 };
 
+//! Students count in ALUMNOS[] array
 const int CANTIDAD_ALUMNOS = (sizeof(ALUMNOS) / sizeof(alumno_t));
 
 /*=====[Definitions of private global variables]=============================*/
@@ -52,6 +56,14 @@ const int CANTIDAD_ALUMNOS = (sizeof(ALUMNOS) / sizeof(alumno_t));
 
 /*=====[Implementations of interrupt functions]==============================*/
 
+/**
+ * @brief It serializes the student data structure into JSON format
+ * @param cadena pointer to the char buffer with the serialized data
+ * @param espacio amount of bytes in the buffer       
+ * @param alumno pointer to the student data structure
+ * @return bool status of serialization process. It returns true when data is properly serialized. 
+ *              It returns false when there is no enough space.
+ */
 bool SerializarAlumno(char * cadena, size_t espacio, const alumno_t alumno) {
     int resultado;
     const char FORMATO[] = "{"
@@ -66,6 +78,13 @@ bool SerializarAlumno(char * cadena, size_t espacio, const alumno_t alumno) {
     return (resultado >= 0);
 }
 
+/**
+ * @brief It serializes all students data structures into JSON format
+ * @param cadena pointer to the char buffer with the serialized data
+ * @param espacio amount of bytes in the buffer 
+ * @return bool status of serialization process. It returns true when data is properly serialized. 
+ *              It returns false when there is no enough space.
+ */
 bool SerializarAlumnos(char * cadena, size_t espacio) {
     static const int  cantidad = sizeof(ALUMNOS) / sizeof(alumno_t);
     int posicion = snprintf(cadena, espacio, "[\r\n  ");
@@ -88,3 +107,4 @@ bool SerializarAlumnos(char * cadena, size_t espacio) {
 }
 
 /*=====[Implementations of private functions]================================*/
+/*=====[End of file]=========================================================*/
